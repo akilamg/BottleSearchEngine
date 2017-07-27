@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Define the page header -->
-    <link rel="shortcut icon" href="static/header.png" />
+    <link rel="shortcut icon" href="static/img/header.png" />
     <title>Random Search</title>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="static/bootstrap.min.css">
-    <link rel="stylesheet" href="static/styles.css">
-    <link rel="stylesheet" href="static/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="static/css/font-awesome.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="static/frontEnd.css">
+    <link rel="stylesheet" href="static/css/frontEnd.css">
 
     <!-- jQuery library -->
-    <script src="static/jquery.min.js"></script>
+    <script src="static/js/jquery.min.js"></script>
+
     <!-- Latest compiled JavaScript -->
-    <script src="static/bootstrap.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
 
     <!-- Custom JS -->
-    <script src="static/pageHandler.js"></script>
-    <script src="static/math.js"></script>
-    <script src="static/doMath.js"></script>
-    <script src="static/frontEnd.js"></script>
+    <script src="static/js/pageHandler.js"></script>
+    <script src="static/js/math.js"></script>
+    <script src="static/js/doMath.js"></script>
+    <script src="static/js/frontEnd.js"></script>
 </head>
 <body>
     <div class="container">
@@ -43,7 +44,7 @@
             </div>
         </div>
         <div id="result-title" class="text-left">
-            <a href="/"><img src="static/title_small.png"></a>
+            <a href="/"><img src="static/img/title_small.png"></a>
         </div>
         <div>
             <form id="results-form" action="" method="get">
@@ -52,10 +53,10 @@
                         <div class="form-group form-group-lg">
                         <div class="input-group">
                             <div id="search_opt_list" class="input-group-btn">
-                                <button id="toggle_image_search" type="button" class="btn btn-lg search_opt">Image</button>
+                                <button id="toggle_image_search" type="button" class="btn btn-primary btn-lg search_opt"><i class='fa fa-check'></i> Image</button>
                                 <button id="toggle_video_search" type="button" class="btn btn-lg search_opt">Video</button>
                             </div>
-                            <input id="search_input" spellcheck="true" type="text" name="keywords" class="form-control" value="{{queryInput}}">
+                            <input id="search_input" type="text" name="image_keywords" class="form-control" value="{{queryInput}}">
                         </div>
                     </div>
                     </div>
@@ -73,25 +74,16 @@
             </h4>
         % end
         <h2>Results</h2>
-        % if math != None:
-        <div id="math_out">
-            <div class="panel panel-default">
-                <div class="panel-body"><i class="fa fa-4x fa-calculator" aria-hidden="true"></i><h4>{{queryInput}}</h4><h1> = {{math}}</h1></div>
-            </div>
-        </div>
-        % end
         <div id="resultContent">
-            % if len(siteList) == 0:
+            % if len(imgList) == 0:
                 <div class="panel panel-default">
                   <div class="panel-body"><h4>No Results Found</h4></div>
                 </div>
             % else:
-                %for url, rank, title, desc in siteList:
+                %for src, rank in imgList:
                     <div class="panel panel-default">
                       <div class="panel-body">
-                          <h4><a class="a_link" href="{{url}}">{{title}}</a></h4>
-                          <p class="cite">{{url}}</p>
-                          <p>{{desc}}</p>
+                          <img src="{{src}}" class="click-img">
                       </div>
                     </div>
                 % end

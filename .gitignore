@@ -1,2 +1,7 @@
 deploy.py
+script.py
+awskeys.conf
+client_secrets.json
+links.db
 data/*
+*.pyc

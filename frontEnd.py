@@ -15,7 +15,7 @@ from spellcheck import correct
 USER_HISTORY = {}
 code = ""
 use_google_login = True
-HOST = sys.argv[1]
+HOST = 'localhost'
 DB_HOST = 'localhost'
 DB_PORT = 27017
 urls_rank = []
@@ -83,14 +83,14 @@ def frontEnd():
                 signin_state = "Sign Out"
                 link = "sign-out"
 
-        return template('homePage.tpl', link=link, signin_state=signin_state, user=user)
+        return template('templates/homePage.tpl', link=link, signin_state=signin_state, user=user)
 
 @error(404)
 @error(405)
 @error(500)
 def error_page(error=404):
     """Redirect to error page incase of incorrect pathing or unauthorized access"""
-    return template('errorPage.tpl')
+    return template('templates/errorPage.tpl')
 
 @route('/redirect')
 def session_google():
@@ -207,7 +207,7 @@ def querySubmit(input, math=None):
             signin_state = "Sign Out"
             link = "sign-out"
 
-        return template('results.tpl', spellcheck=isSpelledCorrect,corrected_search=" ".join(spelled_words),
+        return template('templates/results.tpl', spellcheck=isSpelledCorrect,corrected_search=" ".join(spelled_words),
                         correct_link="?keywords="+"+".join(spelled_words), queryInput=input, user=user, link=link,
                         signin_state=signin_state, siteList=site_relevance[0:u_], page=1, pg_tot=pg_tot, math=math)
 
@@ -252,7 +252,7 @@ def updatePage(input, page=1, math=None):
         u_ = 5 * page
     l_ = 5 * (page - 1)
 
-    return template('results_view.tpl', siteList=site_relevance[l_:u_], page=page, pg_tot=pg_tot)
+    return template('templates/results_view.tpl', siteList=site_relevance[l_:u_], page=page, pg_tot=pg_tot)
 
 # Image search features
 
@@ -304,7 +304,7 @@ def queryImgSubmit(input):
             signin_state = "Sign Out"
             link = "sign-out"
 
-    return template('img_results.tpl',spellcheck=isSpelledCorrect,corrected_search=" ".join(spelled_words),
+    return template('templates/img_results.tpl',spellcheck=isSpelledCorrect,corrected_search=" ".join(spelled_words),
                     correct_link="?image_keywords="+"+".join(spelled_words), queryInput=input, user=user, link=link,
                     signin_state=signin_state, imgList=img_relevance[0:u_], page=1, pg_tot=pg_tot)
 
@@ -339,7 +339,7 @@ def updateImgPage(input, page=1):
         u_ = 5 * page
     l_ = 5 * (page - 1)
 
-    return template('img_results_view.tpl', imgList=img_relevance[l_:u_], page=page, pg_tot=pg_tot)
+    return template('templates/img_results_view.tpl', imgList=img_relevance[l_:u_], page=page, pg_tot=pg_tot)
 
 # Video search features
 
@@ -381,7 +381,7 @@ def queryVidSubmit(input):
             signin_state = "Sign Out"
             link = "sign-out"
 
-    return template('video_results.tpl', spellcheck=isSpelledCorrect,corrected_search=" ".join(spelled_words),
+    return template('templates/video_results.tpl', spellcheck=isSpelledCorrect,corrected_search=" ".join(spelled_words),
                     correct_link="?video_keywords="+"+".join(spelled_words), queryInput=input, user=user, link=link,
                     signin_state=signin_state, vidList=vidList[0:u_], page=1, pg_tot=pg_tot)
 
@@ -402,7 +402,7 @@ def updateVidPage(input, page=1):
         u_ = 5 * page
     l_ = 5 * (page - 1)
 
-    return template('video_results_view.tpl', vidList=vidList[l_:u_], page=page, pg_tot=pg_tot)
+    return template('templates/video_results_view.tpl', vidList=vidList[l_:u_], page=page, pg_tot=pg_tot)
 
 # Login features
 
@@ -435,10 +435,10 @@ def googleAPI():
     redirect(str(uri))
 
 # File Referencing
-@route('/static/<filename>')
-def server_static(filename):
+@route('/static/<path:path>')
+def server_static(path):
     "Routes static files (HTML, CSS, JS or images) references to their correct file path"
-    return static_file(filename, root='')
+    return static_file(path, root='')
 
 @route('/fonts/<filename>')
 def server_fonts(filename):

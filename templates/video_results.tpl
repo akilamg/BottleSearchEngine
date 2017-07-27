@@ -4,28 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Define the page header -->
-    <link rel="shortcut icon" href="static/header.png" />
+    <link rel="shortcut icon" href="static/img/header.png" />
     <title>Random Search</title>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="static/bootstrap.min.css">
-    <link rel="stylesheet" href="static/styles.css">
-    <link rel="stylesheet" href="static/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="static/css/font-awesome.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="static/frontEnd.css">
+    <link rel="stylesheet" href="static/css/frontEnd.css">
 
     <!-- jQuery library -->
-    <script src="static/jquery.min.js"></script>
+    <script src="static/js/jquery.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
-    <script src="static/bootstrap.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
 
     <!-- Custom JS -->
-    <script src="static/pageHandler.js"></script>
-    <script src="static/math.js"></script>
-    <script src="static/doMath.js"></script>
-    <script src="static/frontEnd.js"></script>
+    <script src="static/js/pageHandler.js"></script>
+    <script src="static/js/math.js"></script>
+    <script src="static/js/doMath.js"></script>
+    <script src="static/js/frontEnd.js"></script>
 </head>
 <body>
     <div class="container">
@@ -44,7 +44,7 @@
             </div>
         </div>
         <div id="result-title" class="text-left">
-            <a href="/"><img src="static/title_small.png"></a>
+            <a href="/"><img src="static/img/title_small.png"></a>
         </div>
         <div>
             <form id="results-form" action="" method="get">
