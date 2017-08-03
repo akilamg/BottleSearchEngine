@@ -184,7 +184,7 @@ def querySubmit(input, math=None):
     for site in site_rank:
         site_relevance.append((site[0], len(url_to_word[site[0]]), site[2], site[3]))
 
-        site_relevance.sort(key=lambda tup: tup[1], reverse=True)
+    site_relevance.sort(key=lambda tup: tup[1], reverse=True)
 
     pg_tot = len(site_relevance)
     if 5 > pg_tot:
@@ -243,7 +243,7 @@ def updatePage(input, page=1, math=None):
         for site in site_rank:
             site_relevance.append((site[0], len(url_to_word[site[0]]), site[2], site[3]))
 
-            site_relevance.sort(key=lambda tup: tup[1], reverse=True)
+        site_relevance.sort(key=lambda tup: tup[1], reverse=True)
 
     pg_tot = len(site_relevance)
     if 5 * page > pg_tot:
